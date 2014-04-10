@@ -1,0 +1,14 @@
+{
+    "name": "TerraPass/DBAbstractions",
+    "homepage": "https://github.com/TerraPass/DBAbstractions",
+    "type": "library",
+    "description": "",
+    "require": {
+        "php": ">=5.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DBAbstractions\\": "src/DBAbstractions/"
+        }
+    }
+}
