@@ -16,6 +16,13 @@ interface IDBQuery
     public function setParameters(array $params);
     
     /**
+     * Clear parameters set via setParameters() for this query.
+     * 
+     * @return DBAbstractions\IDBQuery Returns this IDBQuery to allow chaining.
+     */
+    public function clearParameters();
+    
+    /**
      * Execute query, optionally providing parameters along the way.
      * 
      * @param array $params If specified, the query will be parametrized using this array.

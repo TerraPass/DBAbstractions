@@ -24,19 +24,24 @@ class PDOPreparedStatement implements IDBQuery
     public function __construct(PDOStatement $statement)
     {
         $this->_statement = $statement;
+        $this->_params = array();
     }
 
     public function execute(array $params = null)
     {
-        if($params != null)
+        if($params === null)
         {
-            $this->setParameters($params);
+            $params = $this->_params;
+        }
+        else
+        {
+            $params = array_merge($this->_params, $params);
         }
         try 
         {
-            if($this->_params != null && count($this->_params) > 0)
+            if($params != null && count($params) > 0)
             {
-                $this->_statement->execute($this->_params);
+                $this->_statement->execute($params);
             }
             else
             {
@@ -61,6 +66,12 @@ class PDOPreparedStatement implements IDBQuery
     public function setParameters(array $params)
     {
         $this->_params = $params;
+        return $this;
+    }
+
+    public function clearParameters()
+    {
+        $this->_params = array();
         return $this;
     }
 }
